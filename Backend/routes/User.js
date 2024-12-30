@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const zod = require("zod");
-const { User } = require("../db");
+const { User, Account } = require("../db");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 const { authMiddleware } = require("../middleware/authMiddleware");
@@ -15,6 +15,7 @@ const signupBody = zod.object({
 });
 
 router.post("/signup", async (req, res) => {
+  console.log("com")
   try {
     const success = signupBody.safeParse(req.body);
     if (!success) {
@@ -42,6 +43,12 @@ router.post("/signup", async (req, res) => {
 
     const userId = user._id;
 
+    //Initialising balances on Signup
+    await Account.create({
+      userId,
+      balance:1+Math.random()*1000
+    })
+
     const token = jwt.sign(
       {
         userId,
@@ -55,7 +62,7 @@ router.post("/signup", async (req, res) => {
     });
   } catch (err) {
     res.status(411).json({
-      message: "Error while Signup",
+      message:err
     });
   }
 });
@@ -67,7 +74,7 @@ const signinBody = zod.object({
   password: zod.string(),
 });
 
-router.post("/singin", async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     const success = signinBody.safeParse(req.body.username);
     if (!success) {
@@ -135,7 +142,7 @@ router.get("/bulk", async (req, res) => {
   const users = await User.find({
     $or: [
       {
-        fisrtName: {
+        firstName: {
           $regex: filter,
         },
       },  
