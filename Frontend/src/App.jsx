@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Signin from './pages/Signin'
-import Signup from './pages/Signup'
-import DashBoard from './pages/DashBoard'
-import SendMoney from './pages/SendMoney'
+import {Signin} from './pages/Signin'
+import {Signup} from './pages/Signup'
+import {DashBoard} from './pages/DashBoard'
+import {SendMoney} from './pages/SendMoney'
 
 function App() {
   return (
