@@ -3,7 +3,11 @@
 Transactify is a web application designed to streamline user transactions. The application features a user-friendly signup process, allowing users to create accounts by providing their first name, last name, email, and password.
 
 
-Uploading transactify.mp4…
+
+
+
+https://github.com/user-attachments/assets/c2674d2e-5709-4223-a087-78b9397ad761
+
 
 
 ## Features
