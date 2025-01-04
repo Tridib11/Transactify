@@ -28,7 +28,14 @@ export const Signup = () => {
           setPassword(e.target.value)
         }} placeholder="your-password" label={"Password"} />
         <div className="pt-4">
-          <Button label={"Sign up"} />
+          <Button onClick={()=>{
+            axios.post("https://transactify-uwh0.onrender.com/api/v1/user/signup",{
+              username,
+              firstName,
+              lastName,
+              password
+            })
+          }} label={"Sign up"} />
         </div>
         <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
       </div>
