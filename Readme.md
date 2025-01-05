@@ -91,5 +91,3 @@ This project is licensed under the MIT License.
 If you have any questions or feedback, feel free to reach out.
 
 ---
-
-Feel free to adjust the content to better fit your project details and any additional information you might want to include!
